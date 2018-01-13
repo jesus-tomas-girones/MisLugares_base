@@ -123,9 +123,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 .show();
     }
 
-    void ultimaLocalizazion(){
+    void ultimaLocalizazion() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.
-                ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             if (manejador.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 actualizaMejorLocaliz(manejador.getLastKnownLocation(
                         LocationManager.GPS_PROVIDER));
@@ -133,11 +133,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             if (manejador.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
                 actualizaMejorLocaliz(manejador.getLastKnownLocation(
                         LocationManager.NETWORK_PROVIDER));
-            } else  {
-                PermisosUtilidades.solicitarPermiso(Manifest.permission.ACCESS_FINE_LOCATION,
-                        "Sin permiso de localización no es posible mostrar la distancia"+
-                        " a los lugares.", SOLICITUD_PERMISO_LOCALIZACION, this);
             }
+        } else {
+            PermisosUtilidades.solicitarPermiso(Manifest.permission.ACCESS_FINE_LOCATION,
+                "Sin permiso de localización no es posible mostrar la distancia" +
+                " a los lugares.", SOLICITUD_PERMISO_LOCALIZACION, this);
         }
     }
 
